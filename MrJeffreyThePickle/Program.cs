@@ -17,6 +17,7 @@ class Program
     private static AdminCommandHandler _adminCommandHandler;
     private static GeneralCommandHandler _generalCommandHandler;
     private static ChatGPTCommandHandlerService _chatGPTCommandHandlerService;
+    private static CommandBuilderHandler _commandBuilderHandler;
 
     private static async Task Main(string[] args)
     {
@@ -52,10 +53,7 @@ class Program
     {
         try
         {
-            //Register the commands in the command handler.
-            await _adminCommandHandler.ReigsterSlashCommandsAsync();
-            await _generalCommandHandler.ReigsterSlashCommandsAsync();
-            await _chatGPTCommandHandlerService.ReigsterSlashCommandsAsync();
+            await _commandBuilderHandler.BuildAllCommands();
         }
         catch (HttpException exception)
         {
@@ -195,6 +193,7 @@ class Program
             .AddSingleton(config)
             .AddSingleton<DiscordSocketClient>()
             .AddSingleton<LoggingService>()
+            .AddSingleton<CommandBuilderHandler>()
             .AddSingleton<TTSStateHandlerService>()
             .AddSingleton<AdminCommandHandler>()
             .AddSingleton<GeneralCommandHandler>()
@@ -212,6 +211,7 @@ class Program
         _generalCommandHandler = _serviceProvider.GetRequiredService<GeneralCommandHandler>();
         _slashCommandHandlerService = _serviceProvider.GetRequiredService<SlashCommandHandlerService>();
         _chatGPTCommandHandlerService = _serviceProvider.GetRequiredService<ChatGPTCommandHandlerService>();
+        _commandBuilderHandler = _serviceProvider.GetRequiredService<CommandBuilderHandler>();
     }
 
     #endregion

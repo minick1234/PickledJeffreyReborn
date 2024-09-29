@@ -22,19 +22,7 @@ namespace MrJeffreyThePickle
             CHATGPT_API_KEY = Environment.GetEnvironmentVariable("CHATGPT_API_KEY");
             _httpClient = new HttpClient();
         }
-
-        public async Task ReigsterSlashCommandsAsync()
-        {
-            //Ask ChatGPT a question through pickle jeffrey.
-            var AskGPT = new SlashCommandBuilder()
-                .WithName("picklegpt")
-                .WithDescription("Ask PickleGPT any question! Fully integrated with ChatGPT")
-                .AddOption("question", ApplicationCommandOptionType.String,
-                    "The message you would like to send to pickleGPT", true).Build();
-
-            await _client.CreateGlobalApplicationCommandAsync(AskGPT);
-        }
-
+        
         [Command("picklegpt")]
         private async Task HandlePickleGPTCommand(SocketSlashCommand command)
         {
