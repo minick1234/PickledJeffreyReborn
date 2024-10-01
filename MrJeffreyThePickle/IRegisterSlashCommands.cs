@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace MrJeffreyThePickle
 {
-    internal interface IRegisterSlashCommands
-    {
-    }
+    internal interface IRegisterSlashCommands { }
 }

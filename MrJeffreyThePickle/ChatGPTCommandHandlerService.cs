@@ -11,26 +11,28 @@ namespace MrJeffreyThePickle
     public class ChatGPTCommandHandlerService : IRegisterSlashCommands
     {
         private readonly DiscordSocketClient _client;
-        private readonly TTSStateHandlerService _ttsStateHandler;
         private readonly string CHATGPT_API_KEY;
         private readonly HttpClient _httpClient;
 
-        public ChatGPTCommandHandlerService(DiscordSocketClient client, TTSStateHandlerService ttsStateHandlerService)
+        public ChatGPTCommandHandlerService(DiscordSocketClient client)
         {
             _client = client;
-            _ttsStateHandler = ttsStateHandlerService;
             CHATGPT_API_KEY = Environment.GetEnvironmentVariable("CHATGPT_API_KEY");
             _httpClient = new HttpClient();
         }
-        
+
         [Command("picklegpt")]
         private async Task HandlePickleGPTCommand(SocketSlashCommand command)
         {
             string messageToAsk = (string)command.Data.Options.First(option => option.Name == "question").Value;
 
+            await command.DeferAsync();
+
             string responseFromGPT = await GetChatGPTResponse(messageToAsk.ToString());
 
-            await command.RespondAsync(responseFromGPT, null, _ttsStateHandler.IsResponsesTts);
+            await command.FollowupAsync(
+                "**You asked:**\n" + messageToAsk.ToString() + "\n\n**PickledGPT Responded:**\n" + responseFromGPT,
+                null, TTSStateHandlerService.IsResponsesTts);
         }
 
         private async Task<string> GetChatGPTResponse(string question)
@@ -39,11 +41,12 @@ namespace MrJeffreyThePickle
             if (string.IsNullOrEmpty(CHATGPT_API_KEY))
             {
                 Console.WriteLine("No api key is provided.");
+                return null;
             }
-            
+
             var requestBody = new
             {
-                model = "gpt-3",
+                model = "gpt-4o",
                 messages = new[]
                 {
                     new
@@ -61,7 +64,9 @@ namespace MrJeffreyThePickle
                 "application/json");
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", CHATGPT_API_KEY);
 
+            Console.WriteLine("Starting pickleGPT request...");
             var response = await _httpClient.PostAsync("https://api.openai.com/v1/chat/completions", requestContent);
+            Console.WriteLine("Finished request to PickleGPT");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -72,7 +77,7 @@ namespace MrJeffreyThePickle
 
             var responseJson = await response.Content.ReadAsStringAsync();
             dynamic parsedJson = JsonConvert.DeserializeObject(responseJson);
-            string reply = parsedJson.choices[0].message.content; 
+            string reply = parsedJson.choices[0].message.content;
             return reply.Trim();
         }
     }

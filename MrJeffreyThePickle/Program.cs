@@ -21,7 +21,6 @@ class Program
 
     private static async Task Main(string[] args)
     {
-
         //Grab the environment variable for the discord key.
         await RetrieveEnvironmentVariables();
 
@@ -81,14 +80,14 @@ class Program
         }
     }
 
-    private static async Task MessageDeleted(Cacheable<IMessage, ulong> deletedMessage, Cacheable<IMessageChannel, ulong> channel)
+    private static async Task MessageDeleted(Cacheable<IMessage, ulong> deletedMessage,
+        Cacheable<IMessageChannel, ulong> channel)
     {
-
         var deletedMessageContent = await deletedMessage.GetOrDownloadAsync();
         var channelContent = await channel.GetOrDownloadAsync();
 
-        Console.WriteLine($"Message was deleted from: {channelContent.Name}\nDeleted Message: {deletedMessageContent.Content}");
-        
+        Console.WriteLine(
+            $"Message was deleted from: {channelContent.Name}\nDeleted Message: {deletedMessageContent.Content}");
     }
 
     private static async Task MessageRecieved(SocketMessage message)
@@ -98,6 +97,7 @@ class Program
             Console.WriteLine("The bot has sent a message");
             return;
         }
+
         Console.WriteLine($"New Message recieved: {message.Content} in Channel:{message.Channel.Name}");
     }
 
@@ -105,60 +105,6 @@ class Program
     {
         await _slashCommandHandlerService?.HandleCommandAsync(command)!;
     }
-
-    #region DELETE ALL COMMANDS, GUILD AND GLOBAL FOR CLEANUP
-
-    //For now - will change later
-    //But since im testing and making and deleting commands and everything so often
-    //everytime i start the bot i will delete all the old commands and reregister the new ones.
-    private static async Task DeleteAllCommandsAsync()
-    {
-        var globalCommands = await _client.GetGlobalApplicationCommandsAsync();
-        foreach (var command in globalCommands)
-        {
-            await command.DeleteAsync();
-            Console.WriteLine($"Deleted global command: {command.Name}");
-        }
-
-        // Get all commands
-        var commands = await GetGuildCommandsAsync(1250886094682198176, DiscordBotAPIKey);
-
-        // Delete each command
-        foreach (var command in commands)
-        {
-            string commandId = command.id.ToString();
-            await DeleteGuildCommandAsync(1250886094682198176, commandId, DiscordBotAPIKey);
-        }
-    }
-
-    private static async Task<List<dynamic>> GetGuildCommandsAsync(ulong guildId, string botToken)
-    {
-        using var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bot", botToken);
-
-        var response =
-            await client.GetAsync(
-                $"https://discord.com/api/v9/applications/{_client.CurrentUser.Id}/guilds/{guildId}/commands");
-        response.EnsureSuccessStatusCode();
-
-        var commandsJson = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<List<dynamic>>(commandsJson);
-    }
-
-    private static async Task DeleteGuildCommandAsync(ulong guildId, string commandId, string botToken)
-    {
-        using var client = new HttpClient();
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bot", botToken);
-
-        var response =
-            await client.DeleteAsync(
-                $"https://discord.com/api/v9/applications/{_client.CurrentUser.Id}/guilds/{guildId}/commands/{commandId}");
-        response.EnsureSuccessStatusCode();
-
-        Console.WriteLine($"Deleted guild command with ID: {commandId}");
-    }
-
-    #endregion
 
     #region Intial Setups
 
@@ -194,7 +140,6 @@ class Program
             .AddSingleton<DiscordSocketClient>()
             .AddSingleton<LoggingService>()
             .AddSingleton<CommandBuilderHandler>()
-            .AddSingleton<TTSStateHandlerService>()
             .AddSingleton<AdminCommandHandler>()
             .AddSingleton<GeneralCommandHandler>()
             .AddSingleton<SlashCommandHandlerService>()
