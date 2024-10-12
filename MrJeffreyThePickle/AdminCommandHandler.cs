@@ -16,7 +16,7 @@ namespace MrJeffreyThePickle
         {
             _client = client;
         }
-
+        
         [Command("ban")]
         private async Task HandleBanUser(SocketSlashCommand command)
         {

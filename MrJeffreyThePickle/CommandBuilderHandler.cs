@@ -47,9 +47,7 @@ public class CommandBuilderHandler
         {
             new SlashCommandBuilder()
                 .WithName("ping")
-                .WithDescription("PONG")
-                .AddOption("something", ApplicationCommandOptionType.Integer,
-                    "The amount of time the user should last.", false),
+                .WithDescription("PONG").AddOption("blah", ApplicationCommandOptionType.String, "Changed the lalala", false),
 
             new SlashCommandBuilder()
                 .WithName("tts_toggle")
@@ -79,7 +77,13 @@ public class CommandBuilderHandler
                 .WithName("picklegpt")
                 .WithDescription("Ask PickleGPT any question! Fully integrated with ChatGPT")
                 .AddOption("question", ApplicationCommandOptionType.String,
-                    "The message you would like to send to pickleGPT", true)
+                    "The message you would like to send to pickleGPT", true),
+
+            new SlashCommandBuilder().WithName("dm_user_picklegpt_message")
+                .WithDescription("Send a user a message from a highly seductive PickleGPT")
+                .AddOption("user", ApplicationCommandOptionType.User,
+                    "The user you would like to send a steamy PickleGPT message too", true)
+                .AddOption("message", ApplicationCommandOptionType.String, "Context of your steamy response", true)
         };
 
         _AllCommands.Add(commands);
@@ -109,7 +113,6 @@ public class CommandBuilderHandler
         //and make sure that if it already exists in the guild with the same options and command, we skip it
         //but if its not the same or doesnt exist we add it.
 
-
         // Fetch existing registered commands
         var registeredCommands = await _client.GetGlobalApplicationCommandsAsync();
 
@@ -129,11 +132,26 @@ public class CommandBuilderHandler
                         // Then register the new command
                         await _client.CreateGlobalApplicationCommandAsync(slashCommand.Build());
                         Console.WriteLine($"Updated command: {slashCommand.Name}");
+                        
+                        /*
+                        //For production - if commands are updated, send a message to let people know, so they can restart discord client.
+                        foreach (var guild in _client.Guilds) // Loop through all guilds the bot is in
+                        {
+                            // Attempt to get the system channel or a general text channel
+                            var channel = guild.SystemChannel ?? guild.TextChannels.FirstOrDefault();
+
+                            if (channel != null) // Check if a suitable channel was found
+                            {
+                                // Send the message to the channel
+                                await channel.SendMessageAsync("Commands have been updated! Please restart your Discord client to see the changes.");
+                            }
+                        }
+                        */
                     }
                     else
                     {
                         // If the command hasn't changed, skip re-registration
-                        Console.WriteLine($"Command {slashCommand.Name} has not changed, skipping...");
+                        Console.WriteLine($"Command {slashCommand.Name} has not changed, skipping rebuild...");
                     }
                 }
                 else
@@ -199,28 +217,39 @@ public class CommandBuilderHandler
         // If one command has options and the other doesn't, they are different
         var existingOptions = existingCommand.Options ?? new List<SocketApplicationCommandOption>();
         var newOptions = newCommand.Options ?? new List<SlashCommandOptionBuilder>();
-
+        
         if (existingOptions.Count != newOptions.Count)
         {
             return true; // Option count changed
         }
-
-        // Iterate over options if they exist
+        
         for (int i = 0; i < existingOptions.Count; i++)
         {
             var existingOption = existingOptions.ElementAt(i);
-            var newOption = newOptions[i];
 
-            // Compare option names, types, descriptions, and required status
-            if (existingOption.Name != newOption.Name ||
-                existingOption.Type != newOption.Type ||
-                existingOption.Description != newOption.Description ||
-                existingOption.IsRequired != newOption.IsRequired)
+            bool optionExists = false;
+            
+            foreach (var newOption in newOptions)
             {
-                return true; // Option properties changed
+                if (newOption.Name == existingOption.Name)
+                {
+                    optionExists = true;               
+                    // Compare option names, types, descriptions, and required status
+                    if (existingOption.Type != newOption.Type ||
+                        existingOption.Description != newOption.Description || 
+                        (existingOption.IsRequired == true && newOption.IsRequired == false) || 
+                        (existingOption.IsRequired == null && newOption.IsRequired == true))
+                    {
+                        return true; // Option properties changed
+                    }
+                }
+            }
+            //The name of this doesnt exist, hence there is a change between existing commands, and new commands.
+            if (!optionExists)
+            {
+                return true;
             }
         }
-
         return false; // No differences found
     }
 

@@ -35,6 +35,9 @@ namespace MrJeffreyThePickle
         [Command("ping")]
         private async Task HandlePingCommandAsync(SocketSlashCommand command)
         {
+            var message = command.Data.Options.FirstOrDefault(n => n.Name == "blah")?.Value;
+            Console.WriteLine(message);
+            
             await command.RespondAsync("PONG MY BOY", null, TTSStateHandlerService.IsResponsesTts);
         }
 

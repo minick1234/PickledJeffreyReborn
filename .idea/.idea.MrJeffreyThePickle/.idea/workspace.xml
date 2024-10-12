@@ -8,10 +8,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="70f50385-1f52-4457-aaa3-a60c133615c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MrJeffreyThePickle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MrJeffreyThePickle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/AdminCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/AdminCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/GeneralCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/GeneralCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/RequireAdmin.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/SlashCommandHandlerService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/SlashCommandHandlerService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/MrJeffreyThePickle.sourcelink.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/ref/MrJeffreyThePickle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/ref/MrJeffreyThePickle.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/refint/MrJeffreyThePickle.dll" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/Debug/net8.0/refint/MrJeffreyThePickle.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MrJeffreyThePickle/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/MrJeffreyThePickle/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +45,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/29518ae0c9a06f3979718ee3ebdf123121d297a7cd5a3ec719428874c33c28f/CreateApplicationCommandParams.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/30b1d016743a205e68ae8414b95850fefb86d6861ecebe69d917d12c35e3773c/ApplicationCommandOption.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36b25f76ad68b966e04cacee502a5541dfdcf6ad44b5873b3e13fafc43064/DiscordRestApiClient.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3aba4a84c35380ecda10a060726c972448b6ba8f75c04085a74542f1a949a5/BaseSocketClient.Events.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3aba4a84c35380ecda10a060726c972448b6ba8f75c04085a74542f1a949a5/BaseSocketClient.Events.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bd1bb8af9ce9bf18121a42db749a1dff1c7b2591fad9ec5ad62b52135e4/SlashCommandBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/493c8578b958fee4eac48f66ea74a376713757506d56a8505cec7544a04c/ApplicationCommandOptionChoice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6b807359992fb0d79dd83274055ae1cd9c757bfcd01716e741ff6953dbef4/InteractionHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -43,6 +57,12 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1b2ea79cffe134951fa9197ee824eb2f99517ce28924b493160747f92ee68ab/ApplicationCommandOption.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f1b7777c76af2de521ba646b65a7fb883194981163856a96c4e54be29b711/Cacheable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fdfed4d52263cb75cde658ef9849f9f705d69f538513c2c0469a2a5266f59/SocketGuild.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MrJeffreyThePickle/CommandBuilderHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MrJeffreyThePickle/GeneralCommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MrJeffreyThePickle/Program.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -66,6 +86,9 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RiderProblemsViewState">
+    <option name="proportion" value="0.25282362" />
+  </component>
   <component name="RunManager">
     <configuration name="MrJeffreyThePickle" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/MrJeffreyThePickle/bin/Debug/net8.0/MrJeffreyThePickle.exe" />
@@ -100,6 +123,9 @@
       <workItem from="1727749882909" duration="19669000" />
       <workItem from="1728516522283" duration="9668000" />
       <workItem from="1728699369141" duration="698000" />
+      <workItem from="1728700773130" duration="71000" />
+      <workItem from="1728700853612" duration="299000" />
+      <workItem from="1728701163623" duration="2301000" />
     </task>
     <servers />
   </component>

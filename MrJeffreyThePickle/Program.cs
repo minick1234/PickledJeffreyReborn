@@ -86,8 +86,15 @@ class Program
         var deletedMessageContent = await deletedMessage.GetOrDownloadAsync();
         var channelContent = await channel.GetOrDownloadAsync();
 
-        Console.WriteLine(
-            $"Message was deleted from: {channelContent.Name}\nDeleted Message: {deletedMessageContent.Content}");
+        if (deletedMessageContent != null)
+        {
+            Console.WriteLine(
+                $"Message was deleted from: {channelContent.Name}\nDeleted Message: {deletedMessageContent.Content}");
+        }
+        else
+        {
+            Console.WriteLine($"Message was deleted from {channelContent.Name} - Message Unknown");
+        }
     }
 
     private static async Task MessageRecieved(SocketMessage message)

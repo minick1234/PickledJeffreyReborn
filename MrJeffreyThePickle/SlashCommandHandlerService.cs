@@ -24,13 +24,12 @@ namespace MrJeffreyThePickle
 
             foreach (var handler in commandHandlers)
             {
-                //Grab all the methods from the command handler, which are public, an instance, or private.
+                //Grab all the methods from the command handlers, which are public, an instance, or private.
                 //Then filter it to grab the ones that include a custom attribute of type CommandAttribute.
                 var methods = handler.GetType()
                     .GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic)
                     .Where(m => m.GetCustomAttribute<CommandAttribute>() != null);
-
-
+                
                 //For the methods that we found, we need to now filter out the command name from the CommandAttribute class to know,
                 //which command links to what method. When we have that we can make a delegate to store that function. 
                 foreach (var method in methods)
